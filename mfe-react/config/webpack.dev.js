@@ -4,21 +4,24 @@ const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPl
 
 const packageJson = require('../package.json');
 
-const prodConfig = {
-  mode: 'production',
-  output: {
-    filename: '[name].[contenthash].js',
+const devConfig = {
+  mode: 'development',
+  devServer: {
+    port: 8081,
+    historyApiFallback: {
+      index: 'index.html',
+    },
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'marketing',
+      name: 'mfe_react',
       filename: 'remoteEntry.js',
       exposes: {
-        './MarketingApp': './src/bootstrap',
+        './Page': './src/bootstrap',
       },
       shared: packageJson.dependencies,
     }),
   ],
 }
 
-module.exports = merge(commonConfig, prodConfig);
+module.exports = merge(commonConfig, devConfig);
