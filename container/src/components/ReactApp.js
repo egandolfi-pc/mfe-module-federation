@@ -1,4 +1,4 @@
-import { mount } from 'marketing/MarketingApp';
+import { mount } from 'mfe_react/Page';
 import React, { useRef, useEffect } from 'react';
 
 export default () => {
