@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ReactApp from './components/ReactApp';
+import VanillaApp from './components/VanillaApp';
 
 const useStyles = makeStyles((theme) => ({
   mfeContainer: {
@@ -25,14 +26,24 @@ export default () => {
   const classes = useStyles();
 
   return <div>
-    <h1>MicroFrontEnd PoC</h1>
+    <h1>MicroFrontEnd PoC - Webpack Module Federation</h1>
     <hr />
+    {/* React MFE */}
     <div className={classes.mfeContainer}>
       <div className={classes.mfeContainerHeader}>
         Container for React microfrontend
       </div>
       <div className={classes.mfeInstance}>
         <ReactApp />
+      </div>
+    </div>
+    {/* Vanilla MFE */}
+    <div className={classes.mfeContainer}>
+      <div className={classes.mfeContainerHeader}>
+        Container for Vanilla JS microfrontend
+      </div>
+      <div className={classes.mfeInstance}>
+        <VanillaApp />
       </div>
     </div>
   </div>

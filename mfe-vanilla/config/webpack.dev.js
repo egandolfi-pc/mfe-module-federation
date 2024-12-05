@@ -2,25 +2,23 @@ const { merge } = require('webpack-merge');
 const commonConfig = require('./webpack.common');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
-// webpack can figure out which modules should be shared
 const packageJson = require('../package.json');
 
 const devConfig = {
   mode: 'development',
   devServer: {
-    port: 8080,
+    port: 8082,
     historyApiFallback: {
       index: 'index.html',
     },
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'container',
-      remotes: {
-        mfe_react: 'mfe_react@http://localhost:8081/remoteEntry.js',
-        mfe_vanilla: 'mfe_vanilla@http://localhost:8082/remoteEntry.js',
+      name: 'mfe_vanilla',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Page': './src/bootstrap',
       },
-      // shared: ['react', 'react-dom'],
       shared: packageJson.dependencies,
     }),
   ],
