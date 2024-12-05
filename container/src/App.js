@@ -26,7 +26,7 @@ export default () => {
   const classes = useStyles();
 
   return <div>
-    <h1>MicroFrontEnd PoC - Webpack Module Federation</h1>
+    <h1>Microfrontend PoC - Module Federation</h1>
     <hr />
     {/* React MFE */}
     <div className={classes.mfeContainer}>
